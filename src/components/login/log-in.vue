@@ -1,6 +1,6 @@
 <template>
   <v-container class="fill-height">
-    <v-card class="pa-5 card-background" color="#26c6da" dark max-width="100%">
+    <v-card class="pa-5 card-background" dark max-width="100%">
       <v-row justify="space-between">
         <v-col>
           <v-row class="row-logo mr-auto ml-auto">
@@ -82,7 +82,7 @@ import { Component } from "vue-property-decorator";
 export default class Login extends Vue {}
 </script>
 
-<style>
+<style scoped>
 .card-background {
   width: 100%;
   background-color: var(--v-primary-darken4) !important;
