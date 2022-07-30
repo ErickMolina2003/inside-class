@@ -82,7 +82,7 @@ import { Component } from "vue-property-decorator";
 export default class Login extends Vue {}
 </script>
 
-<style>
+<style scoped>
 .card-background {
   width: 100%;
   background-color: var(--v-primary-darken4) !important;
