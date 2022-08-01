@@ -30,6 +30,7 @@ const lightTheme: Partial<VuetifyThemeVariant> = {
   },
   success: {
     base: '#49F2D2',
+    lighten1: '#F8D077',
     darken1: '#36B9CC'
   }
 };
