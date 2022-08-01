@@ -5,6 +5,7 @@ import LandingPublicidad from '../components/landing-page/landing-publicidad.vue
 import LandingVoae from '../components/landing-page/landing-voae.vue';
 import Registro from '../components/login/registro-usuario.vue';
 import MainSideBar from '../components/side-bars/main-side-bar.vue';
+import ChatCard from '../views/chat-card.vue';
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,11 @@ const routes: Array<RouteConfig> = [
     path: '/sideBar',
     name: 'sideBar',
     component: MainSideBar
+  },
+  {
+    path: '/chat',
+    name: 'chat',
+    component: ChatCard
   },
 ]
 
