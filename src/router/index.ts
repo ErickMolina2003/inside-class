@@ -6,6 +6,7 @@ import LandingVoae from '../components/landing-page/landing-voae.vue';
 import Registro from '../components/login/registro-usuario.vue';
 import MainSideBar from '../components/side-bars/main-side-bar.vue';
 import ChatCard from '../views/chat-card.vue';
+import SearchField from '../views/search-field.vue';
 
 Vue.use(VueRouter)
 
@@ -41,6 +42,11 @@ const routes: Array<RouteConfig> = [
     name: 'chat',
     component: ChatCard
   },
+  {
+    path: '/search',
+    name: 'search',
+    component: SearchField
+  }
 ]
 
 const router = new VueRouter({
