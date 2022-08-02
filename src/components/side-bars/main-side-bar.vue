@@ -4,6 +4,7 @@
     v-model="drawer"
     :mini-variant.sync="mini"
     permanent
+    app
   >
     <v-list-item class="px-2 mt-6">
       <v-row justify="center">
