@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import LogIn from "../components/login/log-in.vue";
 import NavBar from "../components/nav-bar.vue";
+import LandingPage from "../components/landing-page/landing-page.vue";
 import LandingPublicidad from "../components/landing-page/landing-publicidad.vue";
 import LandingVoae from "../components/landing-page/landing-voae.vue";
 import Registro from "../components/login/registro-usuario.vue";
@@ -30,6 +31,11 @@ const routes: Array<RouteConfig> = [
     path: "/publicidad",
     name: "publicidad",
     component: LandingPublicidad,
+  },
+  {
+    path: "/landingPage",
+    name: "landingPage",
+    component: LandingPage,
   },
   {
     path: "/voae",
