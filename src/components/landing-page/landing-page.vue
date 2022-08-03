@@ -26,15 +26,15 @@
       >
     </v-toolbar>
 
-    <v-card flat class="Anuncio" :class="$vuetify.breakpoint.mdAndDown ? 'mt-10' : ''" >
-      <v-row style="display: flex;justify-content: center;">
-        <v-col cols="12" md="12" lg="12" class="white--text" style="text-align: center;">
+    <v-card flat class="mt-12 ml-14" color="#ffffff00 " max-width="50%" :class="$vuetify.breakpoint.mdAndDown ? 'mt-10' : ''" >
+      <v-row class="d-flex" justify="center" >
+        <v-col cols="12" md="12" lg="12" class="white--text  text-center">
           <h1>UNAH</h1>
         </v-col>
-        <v-col cols="12" md="12" lg="12" class="white--text" style="text-align: center;">
+        <v-col cols="12" md="12" lg="12" class="white--text  text-center">
           <h1>¡YO SOY PUMA!</h1>
         </v-col>
-        <v-col cols="6" md="6" lg="6" class="white--text" style="text-align: center;">
+        <v-col cols="6" md="6" lg="6" class="white--text text-center">
           <span>
             Deseas tener mas informacion, referencias, consejos sobres tus
             proximas clases, entonces unete a nuestra comunidad de estudiantes
@@ -57,16 +57,10 @@ export default class LandingPage extends Vue {}
 </script>
 
 <style>
-.v-card.especial{
+.especial{
   background-image: url("../../assets/landing-img/BG-Landing.svg");
   repeat: no-repeat;
   background-size: cover;
 }
 
-.Anuncio {
-  margin-top: 20px;
-  margin-left: 50px;
-  background-color:#ffffff00 !important;
-  width: 50%;
-}
 </style>
