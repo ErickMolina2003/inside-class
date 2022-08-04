@@ -7,6 +7,7 @@ import LandingVoae from "../components/landing-page/landing-voae.vue";
 import Registro from "../components/login/registro-usuario.vue";
 import MainSideBar from "../components/side-bars/main-side-bar.vue";
 import ChatCard from "../views/chat-card.vue";
+import VoaeCard from "../views/voae-card.vue";
 
 Vue.use(VueRouter);
 
@@ -45,6 +46,11 @@ const routes: Array<RouteConfig> = [
     path: "/chat",
     name: "chat",
     component: ChatCard,
+  },
+  {
+    path: "/voaeCard",
+    name: "voaeCard",
+    component: VoaeCard,
   },
 ];
 
