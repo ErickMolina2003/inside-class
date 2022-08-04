@@ -1,5 +1,5 @@
 <template>
-  <v-card class="chat-card mx-auto my-12" max-width="227" max-height="307">
+  <v-card class="chat-card mx-auto my-6" max-width="227" max-height="307">
     <v-img height="124" src="../assets/chats-img/chat-default.svg"></v-img>
 
     <h4 class="white--text text-center mt-3">IS501-BASE DE DATOS I</h4>
