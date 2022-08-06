@@ -31,6 +31,7 @@
         v-for="item in items"
         :key="item.title"
         link
+        :to="item.to"
         @click="active(item)"
       >
         <v-list-item-icon>
@@ -74,7 +75,7 @@ export default class MainSideBar extends Vue {
     {
       title: "Chats",
       icon: "mdi-chat-plus",
-      to: "",
+      to: "/layout/chats",
       color: "white--text",
     },
     {
@@ -86,7 +87,7 @@ export default class MainSideBar extends Vue {
     {
       title: "Horas VOAE",
       icon: "mdi-briefcase-clock",
-      to: "",
+      to: "/layout/voae",
       color: "white--text",
     },
     {

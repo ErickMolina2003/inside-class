@@ -1,13 +1,15 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import LogIn from "../components/login/log-in.vue";
+<<<<<<< HEAD
 import NavBar from "../components/nav-bar.vue";
 import LandingPage from "../components/landing-page/landing-page.vue";
 import LandingPublicidad from "../components/landing-page/landing-publicidad.vue";
 import LandingVoae from "../components/landing-page/landing-voae.vue";
+=======
+>>>>>>> 505d93e59d3456c82396e89b05df2769826d2ba6
 import Registro from "../components/login/registro-usuario.vue";
-import MainSideBar from "../components/side-bars/main-side-bar.vue";
-import ChatCard from "../views/chat-card.vue";
+import MainLayout from "../components/layouts/main-layout.vue"
 
 Vue.use(VueRouter);
 
@@ -18,16 +20,12 @@ const routes: Array<RouteConfig> = [
     component: LogIn,
   },
   {
-    path: "/navBar",
-    name: "navBar",
-    component: NavBar,
-  },
-  {
     path: "/registro",
     name: "registro",
     component: Registro,
   },
   {
+<<<<<<< HEAD
     path: "/publicidad",
     name: "publicidad",
     component: LandingPublicidad,
@@ -51,6 +49,22 @@ const routes: Array<RouteConfig> = [
     path: "/chat",
     name: "chat",
     component: ChatCard,
+=======
+    path: "/layout",
+    component: MainLayout,
+    children: [
+      {
+        path: 'chats',
+        name: 'chats',
+        component: () => import('@/components/chats/main-chats.vue')
+      },
+      {
+        path: 'voae',
+        name: 'voae',
+        component: () => import('@/components/horas-voae/horas-voae.vue')
+      }
+    ]
+>>>>>>> 505d93e59d3456c82396e89b05df2769826d2ba6
   },
 ];
 
