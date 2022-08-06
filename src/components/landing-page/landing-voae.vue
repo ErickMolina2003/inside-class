@@ -1,19 +1,19 @@
 <template>
-  <v-container class="fill-height">
+  <v-container>
     <v-row justify="space-between"  :class="$vuetify.breakpoint.mdAndDown ? 'flex-column' : ''">
       <v-col class="mt-auto mb-auto">
         <v-row>
           <v-col cols="12" md="12" lg="12">
             <h1
-              class="success--text text--base voae-titulo text-center"
-              :class="$vuetify.breakpoint.mdAndDown ? 'justify-center' : ''"
+              class="success--text text--base voae-titulo text-left"
+              :class="$vuetify.breakpoint.mdAndDown ? 'text-center' : ''"
               font-size="6rem"
             >
               HORAS VOAE
             </h1>
           </v-col>
           <v-col cols="12" md="12" lg="12">
-            <h3 class="success--text text--base voae-texto">
+            <h3 class="success--text text--base voae-texto text-left" :class="$vuetify.breakpoint.mdAndDown ? 'text-center' : ''">
               Tendremos anuncios de las actividades que estaran disponibles para
               realizar las horas VOAE segun el articulo 140.
             </h3>
@@ -23,8 +23,8 @@
       <v-col>
         <v-row>
           <v-col
-            class="d-flex"
-            :class="$vuetify.breakpoint.mdAndDown ? 'justify-center' : ''"
+            class="d-flex justify-end"
+            :class="$vuetify.breakpoint.mdAndDown || $vuetify.breakpoint.xlOnly ? 'justify-center' : ''"
             md="12"
             lg="12"
             cols="12"
@@ -44,8 +44,8 @@
             ></v-img>
           </v-col>
           <v-col
-            class="d-flex"
-            :class="$vuetify.breakpoint.mdAndDown ? 'justify-center' : ''"
+            class="d-flex justify-end"
+            :class="$vuetify.breakpoint.mdAndDown || $vuetify.breakpoint.xlOnly ? 'justify-center' : ''"
             md="12"
             lg="12"
             cols="12"

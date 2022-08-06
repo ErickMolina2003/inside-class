@@ -1,5 +1,5 @@
 <template>
-  <v-container class="fill-height">
+  <v-container>
     <v-row justify="space-between">
       <v-col>
         <v-row>
@@ -51,15 +51,15 @@
         <v-row>
           <v-col cols="12" md="12" lg="12">
             <h1
-              class="primarybright--text text--lighten-1 publicidad-titulo text-center"
-              :class="$vuetify.breakpoint.mdAndDown ? 'text-center' : ''"
+              class="primarybright--text text--lighten-1 publicidad-titulo text-right"
+              :class="$vuetify.breakpoint.mdAndDown || $vuetify.breakpoint.xlOnly ? 'text-center' : ''"
               font-size="6rem"
             >
               PUBLICIDAD
             </h1>
           </v-col>
           <v-col cols="12" md="12" lg="12">
-            <h3 class="primarybright--text text--lighten-1 publicidad-texto">
+            <h3 class="primarybright--text text--lighten-1 publicidad-texto text-right" :class="$vuetify.breakpoint.mdAndDown || $vuetify.breakpoint.xlOnly ? 'text-center' : ''">
               Tendremos anuncios de diferentes negocios y eventos que se
               realizaran en la Universidad para que mas gente de la comunidad de
               estudiantes pueda participar y vivir muchas experiencias unicas.

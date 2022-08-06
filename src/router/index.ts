@@ -3,12 +3,18 @@ import VueRouter, { RouteConfig } from "vue-router";
 import LogIn from "../components/login/log-in.vue";
 import Registro from "../components/login/registro-usuario.vue";
 import MainLayout from "../components/layouts/main-layout.vue";
+import LandingLayout from "../components/layouts/landing-layout.vue";
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
     path: "/",
+    name: "landing",
+    component: LandingLayout,
+  },
+  {
+    path: "/login",
     name: "login",
     component: LogIn,
   },
