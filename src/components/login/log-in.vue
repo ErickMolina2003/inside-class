@@ -1,6 +1,11 @@
 <template>
   <v-container class="fill-height">
-    <v-card class="pa-5 card-background" dark max-width="100%">
+    <v-card
+      class="pa-5 rounded-xl"
+      color="var(--v-primary-darken4)"
+      dark
+      width="100%"
+    >
       <v-row justify="space-between">
         <v-col>
           <v-row class="row-logo mr-auto ml-auto">
@@ -83,12 +88,6 @@ export default class Login extends Vue {}
 </script>
 
 <style scoped>
-.card-background {
-  width: 100%;
-  background-color: var(--v-primary-darken4) !important;
-  border-radius: 20px 20px 20px !important;
-}
-
 .row-logo {
   width: 50%;
 }

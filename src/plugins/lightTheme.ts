@@ -23,7 +23,8 @@ const lightTheme: Partial<VuetifyThemeVariant> = {
   lightgray: {
     base: '#f9f9f9',
     darken1: '#737BA1',
-    darken2: '#778EB0'
+    darken2: '#778EB0',
+    darken3: '#afb5c4'
   },
   error: {
     base: '#EE7CA4',
