@@ -9,7 +9,7 @@
 <script lang="ts">
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
-import EventosCard from "../../views/eventos-card.vue";
+import EventosCard from "../../views/evento-card.vue";
 
 @Component({
   name: "MainChats",

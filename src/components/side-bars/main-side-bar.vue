@@ -93,7 +93,7 @@ export default class MainSideBar extends Vue {
     {
       title: "Eventos",
       icon: "mdi-star",
-      to: "",
+      to: "/layout/eventos",
       color: "success--text text--lighten-1",
     },
   ];

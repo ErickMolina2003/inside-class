@@ -30,6 +30,11 @@ const routes: Array<RouteConfig> = [
         path: 'voae',
         name: 'voae',
         component: () => import('@/components/horas-voae/horas-voae.vue')
+      },
+      {
+        path: 'eventos',
+        name: 'eventos',
+        component: () => import('@/components/eventos/eventos-component.vue')
       }
     ]
   },

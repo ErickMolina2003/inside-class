@@ -1,7 +1,7 @@
 <template>
   <v-card class="evento-card mx-auto my-6" max-width="300">
     <v-img height="261" src="../assets/eventos-img/evento-img.svg"> </v-img>
-    <v-card-actions active-class="active" class="d-flex justify-space-between">
+    <v-card-actions class="d-flex justify-space-between">
       <v-card-title class="pt-0 pb-0 pl-2">
         <h3 class="white--text">Venta de pizza</h3>
       </v-card-title>
@@ -30,11 +30,15 @@
 </template>
 
 <script lang="ts">
-export default {
-  data: () => ({
-    show: false,
-  }),
-};
+import Vue from "vue";
+import { Component } from "vue-property-decorator";
+
+@Component({
+  name: "EventoCard",
+})
+export default class EventoCard extends Vue {
+  show = false;
+}
 </script>
 
 <style scoped>
