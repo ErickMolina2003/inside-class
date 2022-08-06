@@ -1,5 +1,5 @@
 <template>
-  <v-card class="especial" flat height="100%" >
+  <v-card class="especial" flat>
     <v-toolbar flat color="var(--v-primary-base) mb-10">
       <v-img
         contain
@@ -25,13 +25,18 @@
         >Login</v-btn
       >
     </v-toolbar>
-
-    <v-card flat class="mt-12 ml-14" color="#ffffff00 " max-width="50%" :class="$vuetify.breakpoint.mdAndDown ? 'mt-10' : ''" >
-      <v-row class="d-flex" justify="center" >
-        <v-col cols="12" md="12" lg="12" class="white--text  text-center">
+    <v-card
+      flat
+      class="mt-12 ml-14"
+      color="#ffffff00 "
+      max-width="50%"
+      :class="$vuetify.breakpoint.mdAndDown ? 'mt-10' : ''"
+    >
+      <v-row class="d-flex" justify="center">
+        <v-col cols="12" md="12" lg="12" class="white--text text-center">
           <h1>UNAH</h1>
         </v-col>
-        <v-col cols="12" md="12" lg="12" class="white--text  text-center">
+        <v-col cols="12" md="12" lg="12" class="white--text text-center">
           <h1>¡YO SOY PUMA!</h1>
         </v-col>
         <v-col cols="6" md="6" lg="6" class="white--text text-center">
@@ -57,10 +62,10 @@ export default class LandingPage extends Vue {}
 </script>
 
 <style>
-.especial{
+.especial {
   background-image: url("../../assets/landing-img/BG-Landing.svg");
+  object-fit: contain;
   repeat: no-repeat;
   background-size: cover;
 }
-
 </style>
