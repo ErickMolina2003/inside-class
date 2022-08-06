@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import LogIn from "../components/login/log-in.vue";
 import Registro from "../components/login/registro-usuario.vue";
-import MainLayout from "../components/layouts/main-layout.vue"
+import MainLayout from "../components/layouts/main-layout.vue";
 
 Vue.use(VueRouter);
 
