@@ -41,6 +41,11 @@ const routes: Array<RouteConfig> = [
         path: 'eventos',
         name: 'eventos',
         component: () => import('@/components/eventos/eventos-component.vue')
+      },
+      {
+        path: 'cuenta',
+        name: 'cuenta',
+        component: () => import('@/components/usuario/usuario-cuenta.vue')
       }
     ]
   },
