@@ -1,7 +1,7 @@
 <template>
   <span>
     <side-bar></side-bar>
-    <nav-bar></nav-bar>
+    <nav-bar v-if="showNavBar"></nav-bar>
     <router-view></router-view>
   </span>
 </template>
@@ -16,7 +16,14 @@ import NavBar from "../nav-bar.vue";
   name: "MainLayout",
   components: { SideBar, NavBar },
 })
-class MainLayout extends Vue {}
+class MainLayout extends Vue {
+  get showNavBar() {
+    if (this.$route.name === "chatting") {
+      return false;
+    }
+    return true;
+  }
+}
 
 export default MainLayout;
 </script>
