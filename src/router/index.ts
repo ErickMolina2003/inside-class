@@ -33,6 +33,11 @@ const routes: Array<RouteConfig> = [
         component: () => import('@/components/chats/main-chats.vue')
       },
       {
+        path: 'chatting',
+        name: 'chatting',
+        component: () => import('@/components/side-bars/secondary-side-bar.vue')
+      },
+      {
         path: 'voae',
         name: 'voae',
         component: () => import('@/components/horas-voae/horas-voae.vue')

@@ -2,7 +2,7 @@
   <v-navigation-drawer
     color="var(--v-primary-darken1)"
     v-model="drawer"
-    :mini-variant.sync="mini"
+    :mini-variant.sync="currentRouteName"
     permanent
     app
   >
@@ -11,13 +11,13 @@
         <v-img
           contain
           src="../../assets/logo-IC/logo-IC.svg"
-          :max-height="mini ? '40px' : '100px'"
-          :max-width="mini ? '40px' : '100px'"
+          :max-height="currentRouteName ? '40px' : '100px'"
+          :max-width="currentRouteName ? '40px' : '100px'"
         ></v-img>
       </v-row>
     </v-list-item>
 
-    <v-list-item v-if="!mini" class="py-2">
+    <v-list-item v-if="!currentRouteName" class="py-2">
       <v-row justify="center">
         <h4 class="white--text">Inside Class</h4>
       </v-row>
@@ -81,7 +81,7 @@ export default class MainSideBar extends Vue {
     {
       title: "Mis Chats",
       icon: "mdi-chat",
-      to: "",
+      to: "/layout/chatting",
       color: "white--text",
     },
     {
@@ -98,7 +98,6 @@ export default class MainSideBar extends Vue {
     },
   ];
 
-  mini = false;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   active(item: any) {
@@ -109,6 +108,13 @@ export default class MainSideBar extends Vue {
 
       i == item ? (i.color = "success--text text--base") : "";
     });
+  }
+
+  get currentRouteName() {
+    if (this.$route.name != "chatting") {
+      return false;
+    }
+    return true;
   }
 }
 </script>
