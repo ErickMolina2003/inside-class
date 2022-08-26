@@ -1,5 +1,5 @@
 <template>
-  <v-card class="especial" flat>
+  <v-card class="landing-container" flat>
     <v-toolbar flat color="var(--v-primary-base) mb-10">
       <v-img
         contain
@@ -40,7 +40,7 @@
           <h1>¡YO SOY PUMA!</h1>
         </v-col>
         <v-col cols="6" md="6" lg="6" class="white--text text-center">
-          <span>
+          <span >
             Deseas tener mas informacion, referencias, consejos sobres tus
             proximas clases, entonces unete a nuestra comunidad de estudiantes
             donde podras tener toda la informacion que necesites...
@@ -61,11 +61,14 @@ import { Component } from "vue-property-decorator";
 export default class LandingPage extends Vue {}
 </script>
 
-<style>
-.especial {
-  background-image: url("../../assets/landing-img/BG-Landing.svg");
-  object-fit: contain;
-  repeat: no-repeat;
+<style scoped>
+.landing-container {
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-image: url("../../assets/landing-img/BG-Landing2.svg");
+  background-repeat: no-repeat;
   background-size: cover;
 }
 </style>
