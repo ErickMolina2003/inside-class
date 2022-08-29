@@ -1,9 +1,9 @@
 <template>
-    <span>
-        <main-landing></main-landing>
-        <publicidad-landing class="my-6"></publicidad-landing>
-        <voae-landing class="my-6"></voae-landing>
-    </span>
+  <span>
+    <main-landing></main-landing>
+    <publicidad-landing class="my-6"></publicidad-landing>
+    <voae-landing class="my-6"></voae-landing>
+  </span>
 </template>
 
 <script lang="ts">
@@ -19,3 +19,5 @@ import VoaeLanding from "../landing-page/landing-voae.vue";
 })
 export default class LandingLayout extends Vue {}
 </script>
+
+<style scoped></style>
