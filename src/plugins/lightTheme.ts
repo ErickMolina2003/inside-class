@@ -7,7 +7,8 @@ const lightTheme: Partial<VuetifyThemeVariant> = {
     darken2: '#252D4A',
     darken3: '#3F425E',
     darken4: '#37466B', 
-    lighten1: '#3C5982'
+    lighten1: '#3C5982',
+    lighten2: '#1c243f'
   },
   primarybright: {
     base: '#6F4EF6',
