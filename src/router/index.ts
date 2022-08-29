@@ -24,6 +24,11 @@ const routes: Array<RouteConfig> = [
     component: Registro,
   },
   {
+    path: "/user",
+    name: "user",
+    component: () => import('@/components/usuario/usuario-cuenta.vue'),
+  },
+  {
     path: "/layout",
     component: MainLayout,
     children: [
@@ -31,11 +36,6 @@ const routes: Array<RouteConfig> = [
         path: 'chats',
         name: 'chats',
         component: () => import('@/components/chats/main-chats.vue')
-      },
-      {
-        path: 'chatting',
-        name: 'chatting',
-        component: () => import('@/components/side-bars/secondary-side-bar.vue')
       },
       {
         path: 'voae',
@@ -53,6 +53,11 @@ const routes: Array<RouteConfig> = [
         component: () => import('@/components/usuario/usuario-cuenta.vue')
       }
     ]
+  },
+  {
+    path: '/chatting',
+    name: 'chatting',
+    component: () => import('@/components/layouts/chat-layout.vue')
   },
 ];
 

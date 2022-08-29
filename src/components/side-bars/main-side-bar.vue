@@ -4,7 +4,8 @@
     v-model="drawer"
     :mini-variant.sync="currentRouteName"
     permanent
-    app
+    :app="!currentRouteName"
+    :absolute="currentRouteName"
   >
     <v-list-item class="px-2 mt-6">
       <v-row justify="center">
@@ -81,7 +82,7 @@ export default class MainSideBar extends Vue {
     {
       title: "Mis Chats",
       icon: "mdi-chat",
-      to: "/layout/chatting",
+      to: "/chatting",
       color: "white--text",
     },
     {
@@ -97,7 +98,6 @@ export default class MainSideBar extends Vue {
       color: "success--text text--lighten-1",
     },
   ];
-
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   active(item: any) {

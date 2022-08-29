@@ -21,7 +21,7 @@
         ></v-text-field>
       </v-col>
       <v-spacer></v-spacer>
-      <v-col class="" lg="4" md="4" cols="4">
+      <v-col lg="4" md="4" cols="4">
         <h3 class="mt-2 text-right">Erick Molina</h3>
       </v-col>
       <v-col lg="2" md="2" cols="2">
