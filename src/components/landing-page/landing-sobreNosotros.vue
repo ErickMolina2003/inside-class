@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="$vuetify.breakpoint.lgAndUp ? 'layout_nosotros' : ''">
     <h1
       class="d-flex justify-center white--text text-center pt-5 text-lg-h1 text-md-h2 text-sm-h3 font-weight-bold"
     >
@@ -126,3 +126,9 @@ import { Component } from "vue-property-decorator";
 })
 export default class LandingNosotros extends Vue {}
 </script>
+
+<style scoped>
+.layout_nosotros {
+  height: 100vh;
+}
+</style>
