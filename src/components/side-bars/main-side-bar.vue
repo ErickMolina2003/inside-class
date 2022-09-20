@@ -24,7 +24,7 @@
       </v-row>
     </v-list-item>
 
-    <v-divider class="my-2" color="var(--v-white)"></v-divider>
+    <v-divider class="my-2 cut" color="var(--v-white)"></v-divider>
 
     <v-list dense>
       <v-list-item
@@ -119,4 +119,10 @@ export default class MainSideBar extends Vue {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.cut{
+  border-width: 0.1rem !important;
+  border-color: var(--v-lightgray-darken1) !important;
+  height: 100%;
+}
+</style>
