@@ -10,12 +10,14 @@ interface UserState {
 @Module({namespaced: true, name: "UserStore"})
 class UserStore extends VuexModule implements UserState{
     user: User = {
+        id: 0,
         username: '',
         email: '',
         password: '',
         firstName: '',
         lastName: '',
-        career: -1
+        career: -1,
+        chats: []
     }
 
     @Mutation

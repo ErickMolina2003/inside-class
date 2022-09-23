@@ -1,24 +1,32 @@
+export interface Careers {
+    id: number,
+    title: string,
+}
+
 export interface Chat {
     title: string,
     code: string,
-    numberMembers: number,
+    careerCode: number,
+    numberMembers?: number,
     members: Array<number>,
     messages: messages[]
 }
 
 export interface messages {
     speaker: number,
-    listener: number,
+    listener: string,
     message: string
 }
 
 export interface User {
+    id: number,
     username: string,
     email: string,
     password: string,
     firstName: string,
     lastName: string,
-    career: number
+    career: number,
+    chats?: Array<string>
 }
 
 export interface voae {
