@@ -2,14 +2,14 @@
   <v-card class="voae-card mx-auto my-6" max-width="300" max-height="500">
     <v-img height="180" src="../assets/voae-img/voae-card-img.svg"></v-img>
     <v-card-title class="white--text pb-0 mt-3"
-      >Caminata a la tigra</v-card-title
+      >{{ voae.title }}</v-card-title
     >
     <v-card-text class="lightgray--text text--darken-1">
       <h5>
-        Domingo 27 Noviembre a las 9PM <br />
-        Ambito Academico, cultural y social <br />
-        25 Horas VOAE <br />
-        UNAH - porton 1
+        {{ voae.date }} <br />
+        {{ voae.type }} <br />
+        {{ voae.hours }} Horas VOAE <br />
+        {{ voae.location }}
       </h5>
     </v-card-text>
     <v-row justify="center">
@@ -22,12 +22,15 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { Component } from "vue-property-decorator";
+import { Component, Prop } from "vue-property-decorator";
+import { voae } from "@/store/models/chats";
 
 @Component({
   name: "VoaeCard",
 })
-export default class VoaeCard extends Vue {}
+export default class VoaeCard extends Vue {
+  @Prop({ default: [] }) voae !: voae
+}
 </script>
 
 <style scoped>

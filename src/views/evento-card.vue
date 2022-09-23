@@ -3,7 +3,7 @@
     <v-img height="261" src="../assets/eventos-img/evento-img.svg"> </v-img>
     <v-card-actions class="d-flex justify-space-between">
       <v-card-title class="pt-0 pb-0 pl-2">
-        <h3 class="white--text">Venta de pizza</h3>
+        <h3 class="white--text">{{ evento.title }}</h3>
       </v-card-title>
       <v-btn icon @click="show = !show">
         <v-icon class="white--text">{{
@@ -17,11 +17,10 @@
 
         <v-card-text class="white--text">
           <h5>
-            Venta de pizza de little Caesars por parte de los estudiantes de
-            Sistemas <br />
-            Lugar: Edifcio B2 <br />
-            Hora: 2-5 pm <br />
-            precio: 20 lps
+            {{ evento.description}} <br />
+            Lugar: {{ evento.location }} <br />
+            Hora: {{ evento.time }} <br />
+            precio: {{ evento.price }} lps
           </h5>
         </v-card-text>
       </div>
@@ -31,13 +30,17 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { Component } from "vue-property-decorator";
+import { Component, Prop } from "vue-property-decorator";
+import { events } from "@/store/models/chats";
+
 
 @Component({
   name: "EventoCard",
 })
 export default class EventoCard extends Vue {
   show = false;
+
+  @Prop({ default: [] }) evento!: events;
 }
 </script>
 
