@@ -19,7 +19,7 @@
       </v-col>
     </v-row>
 
-    <v-divider class="mb-4" color="white"></v-divider>
+    <v-divider class="mb-4 cut" color="white"></v-divider>
 
     <v-row>
       <v-col cols="12" lg="12" md="12">
@@ -80,4 +80,10 @@ import { Component } from "vue-property-decorator";
 export default class RightSideBar extends Vue {}
 </script>
 
-<style scoped></style>
+<style scoped>
+.cut{
+  border-width: 0.1rem !important;
+  border-color:white !important;
+  height: 100%;
+}
+</style>

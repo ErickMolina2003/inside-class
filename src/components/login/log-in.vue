@@ -22,7 +22,7 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-divider vertical dark></v-divider>
+        <v-divider vertical dark class="cut"></v-divider>
         <v-col class="text-center">
           <v-row justify="center">
             <v-col class="pb-0">
@@ -90,5 +90,9 @@ export default class Login extends Vue {}
 <style scoped>
 .row-logo {
   width: 50%;
+}
+.cut{
+  border-width: 0.2rem !important;
+  border-color: var(--v-primary-base) !important; 
 }
 </style>

@@ -13,7 +13,7 @@
     </v-card-actions>
     <v-expand-transition>
       <div v-show="show">
-        <v-divider class="success lighten-1"></v-divider>
+        <v-divider class="success lighten-1 cut"></v-divider>
 
         <v-card-text class="white--text">
           <h5>
@@ -45,5 +45,9 @@ export default class EventoCard extends Vue {
 .evento-card {
   background-color: var(--v-primary-darken2);
   border-radius: 30px;
+}
+.cut{
+  border-width: 0.1rem !important;
+  height: 100%;
 }
 </style>
