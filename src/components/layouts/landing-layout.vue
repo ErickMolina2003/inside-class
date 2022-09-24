@@ -3,7 +3,7 @@
     <main-landing></main-landing>
     <publicidad-landing class="my-6"></publicidad-landing>
     <voae-landing class="my-6"></voae-landing>
-    <nosotros-landing class="my-8"></nosotros-landing>
+    <nosotros-landing class="my-8 pt-8"></nosotros-landing>
   </span>
 </template>
 
