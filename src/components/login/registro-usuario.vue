@@ -194,7 +194,7 @@ export default class Registro extends Vue {
   }
 
   encontrarCarrera(nombreCarrera: string) {
-    let newCarrera = this.carreras.find((carrera, index) => {
+    let newCarrera = this.carreras.find((carrera) => {
       if (carrera.title == nombreCarrera) {
         return carrera;
       }
@@ -210,6 +210,7 @@ export default class Registro extends Vue {
     });
 
     let cantidadUsuario = 0;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     for (let usuario in usuarios.data) {
       cantidadUsuario++;
     }

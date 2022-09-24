@@ -90,6 +90,9 @@
 <script lang="ts">
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
+import { getModule } from "vuex-module-decorators";
+import UserStore from "@/store/models/user";
+
 import axios from "axios";
 
 @Component({
@@ -100,6 +103,7 @@ export default class Login extends Vue {
   password = "";
   isLogged = false;
   snackbar = false;
+  userStore = getModule(UserStore, this.$store);
 
   redirectToCreate() {
     this.$router.push("/registro");
@@ -116,6 +120,7 @@ export default class Login extends Vue {
         ) {
           this.$router.push("/layout/chats");
           this.isLogged = true;
+          this.userStore.setLoggedUser(user);
         }
       });
       if (!this.isLogged) {
