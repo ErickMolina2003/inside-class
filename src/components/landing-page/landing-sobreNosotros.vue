@@ -18,7 +18,7 @@
         <v-img src="../../assets/nosotros-img/fondo-erick.svg" height="212px"
           ><div>
             <v-img
-              src="../../assets/usuarios/erick.svg"
+              src="../../assets/nosotros-img/erick.svg"
               width="163px"
               class="ml-auto mr-auto"
             ></v-img></div
@@ -53,7 +53,7 @@
         <v-img src="../../assets/nosotros-img/fondo-angel.svg" height="212px"
           ><div>
             <v-img
-              src="../../assets/usuarios/erick.svg"
+              src="../../assets/nosotros-img/Angel.svg"
               width="163px"
               class="ml-auto mr-auto"
             ></v-img></div
@@ -88,7 +88,7 @@
         <v-img src="../../assets/nosotros-img/fondo-gabo.svg" height="212px"
           ><div>
             <v-img
-              src="../../assets/usuarios/erick.svg"
+              src="../../assets/nosotros-img/Gabriel.svg"
               width="163px"
               class="ml-auto mr-auto"
             ></v-img></div
