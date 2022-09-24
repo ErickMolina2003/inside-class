@@ -15,7 +15,8 @@ export interface Chat {
 export interface messages {
     speaker: number,
     listener: string,
-    message: string
+    message: string,
+    speakerTitle?: string
 }
 
 export interface User {

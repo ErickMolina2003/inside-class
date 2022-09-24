@@ -1,5 +1,10 @@
 <template>
-  <v-navigation-drawer color="var(--v-primary-darken1)" app permanent width="300">
+  <v-navigation-drawer
+    color="var(--v-primary-darken1)"
+    app
+    permanent
+    width="300"
+  >
     <div class="pl-14">
       <v-row justify="center" class="my-5">
         <v-col cols="10" lg="10" md="10">
@@ -17,8 +22,19 @@
       </v-row>
 
       <v-row>
-        <v-col cols="12" md="12" lg="12" class="mb-3">
-          <v-row class="pa-2 active-chat chat-row mx-1">
+        <v-col
+          cols="12"
+          md="12"
+          lg="12"
+          class="mb-3"
+          v-for="(myChat, index) in myChats"
+          :key="index"
+        >
+          <v-row
+            :class="index === userStore.activeChat ? 'active-chat' : ''"
+            class="pa-2 chat-row mx-1"
+            @click="updateActiveChat(index)"
+          >
             <v-col lg="3" md="3" cols="3" class="pa-0" align-self="center">
               <v-img
                 class="img-chat rounded-circle"
@@ -28,58 +44,12 @@
             <v-col lg="9" md="9" cols="9" class="white--text text-center">
               <v-row>
                 <v-col cols="12" lg="12" md="12" class="py-2">
-                  <h4>IS-501</h4>
+                  <h4>{{ myChat.code }}</h4>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12" lg="12" md="12" class="py-1">
-                  <h4>BASE DE DATOS 1</h4>
-                </v-col>
-              </v-row>
-            </v-col>
-          </v-row>
-        </v-col>
-
-        <v-col cols="12" md="12" lg="12" class="mb-3">
-          <v-row class="pa-2 inactive-chat chat-row mx-1">
-            <v-col lg="3" md="3" cols="3" class="pa-0" align-self="center">
-              <v-img
-                class="img-chat rounded-circle"
-                src="@/assets/usuarios/perfil.svg"
-              ></v-img>
-            </v-col>
-            <v-col lg="9" md="9" cols="9" class="white--text text-center">
-              <v-row>
-                <v-col cols="12" lg="12" md="12" class="py-2">
-                  <h4>IS-501</h4>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="12" lg="12" md="12" class="py-1">
-                  <h4>BASE DE DATOS 1</h4>
-                </v-col>
-              </v-row>
-            </v-col>
-          </v-row>
-        </v-col>
-
-        <v-col cols="12" md="12" lg="12" class="mb-3">
-          <v-row class="pa-2 inactive-chat chat-row mx-1">
-            <v-col lg="3" md="3" cols="3" class="pa-0" align-self="center">
-              <v-img
-                class="img-chat rounded-circle"
-                src="@/assets/usuarios/perfil.svg"
-              ></v-img>
-            </v-col>
-            <v-col lg="9" md="9" cols="9" class="white--text text-center">
-              <v-row>
-                <v-col cols="12" lg="12" md="12" class="py-2">
-                  <h4>IS-501</h4>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="12" lg="12" md="12" class="py-1">
-                  <h4>BASE DE DATOS 1</h4>
+                  <h5>{{ myChat.title }}</h5>
                 </v-col>
               </v-row>
             </v-col>
@@ -94,11 +64,23 @@
 <script lang="ts">
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
+import { getModule } from "vuex-module-decorators";
+import UserStore from "@/store/models/user";
 
 @Component({
   name: "SecondarySideBar",
 })
-export default class SecondaySideBar extends Vue {}
+export default class SecondaySideBar extends Vue {
+  userStore = getModule(UserStore, this.$store);
+
+  myChats = this.userStore.chats;
+
+  updateActiveChat(chatId: number) {
+    this.userStore.setActiveChat(chatId);
+    this.userStore.getMembersActiveChat();
+    this.userStore.getMessages();
+  }
+}
 </script>
 
 <style scoped>

@@ -61,6 +61,7 @@
                 type="password"
                 label="contrasena"
                 solo
+                v-on:keyup.enter="login"
               ></v-text-field>
             </v-col>
           </v-row>
@@ -121,6 +122,9 @@ export default class Login extends Vue {
           this.$router.push("/layout/chats");
           this.isLogged = true;
           this.userStore.setLoggedUser(user);
+          this.userStore.setAllUsers(allUsers);
+          this.userStore.setCareer();
+          this.userStore.setAllChats();
         }
       });
       if (!this.isLogged) {
