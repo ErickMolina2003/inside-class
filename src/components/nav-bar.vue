@@ -60,7 +60,7 @@ export default class NavBar extends Vue {
     }else if (this.$route.name == "eventos") {
       return "Eventos";
     }else {
-      return "No";
+      return "Inside Class";
     }
   }
 }
