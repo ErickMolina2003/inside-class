@@ -2,7 +2,7 @@
   <v-app-bar color="var(--v-primary-base)" dense dark flat class="mt-4 ml-4">
     <v-row>
       <v-toolbar-title>
-        <h2>Descubre tus Chats</h2>
+        <h2>{{ routeTittle }}</h2>
       </v-toolbar-title>
     </v-row>
 
@@ -22,7 +22,9 @@
       </v-col>
       <v-spacer></v-spacer>
       <v-col lg="4" md="4" cols="4">
-        <h3 class="mt-2 text-right">Erick Molina</h3>
+        <h3 class="mt-2 text-right">
+          {{ user.firstName }} {{ user.lastName }}
+        </h3>
       </v-col>
       <v-col lg="2" md="2" cols="2">
         <v-img
@@ -38,13 +40,30 @@
 <script lang="ts">
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
+import { getModule } from "vuex-module-decorators";
+import UserStore from "@/store/models/user";
 import sideBar from "../components/side-bars/main-side-bar.vue";
 
 @Component({
   name: "NavBar",
   components: { sideBar },
 })
-export default class NavBar extends Vue {}
+export default class NavBar extends Vue {
+  userStore = getModule(UserStore, this.$store);
+  user = this.userStore.user;
+
+  get routeTittle() {
+    if (this.$route.name == "chats") {
+      return "Descubre nuevos chats";
+    }else if (this.$route.name == "voae") {
+      return "Horas VOAE";
+    }else if (this.$route.name == "eventos") {
+      return "Eventos";
+    }else {
+      return "Inside Class";
+    }
+  }
+}
 </script>
 
 <style scoped></style>
