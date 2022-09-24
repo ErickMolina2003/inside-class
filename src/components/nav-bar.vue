@@ -22,7 +22,7 @@
       </v-col>
       <v-spacer></v-spacer>
       <v-col lg="4" md="4" cols="4">
-        <h3 class="mt-2 text-right">
+        <h3 class="mt-2 text-right" @click="redirectToProfile">
           {{ user.firstName }} {{ user.lastName }}
         </h3>
       </v-col>
@@ -31,6 +31,7 @@
           src="../assets/usuarios/perfil.svg"
           max-height="45px"
           max-width="45px"
+          @click="redirectToProfile"
         ></v-img>
       </v-col>
     </v-row>
@@ -62,6 +63,10 @@ export default class NavBar extends Vue {
     }else {
       return "Inside Class";
     }
+  }
+
+  redirectToProfile(){
+    this.$router.push("/user");
   }
 }
 </script>
