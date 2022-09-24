@@ -12,11 +12,13 @@
               ></v-img>
             </v-col>
             <v-col align-self="center">
-              <h2>Eralejo2003 / Erick Molina</h2>
+              <h2>
+                {{ user.username }} / {{ user.firstName }} {{ user.lastName }}
+              </h2>
             </v-col>
             <v-spacer></v-spacer>
             <v-col align-self="center">
-              <h2>Ingenieria en sistemas</h2>
+              <h2>{{ carrera }}</h2>
             </v-col>
           </v-row>
         </v-col>
@@ -29,7 +31,7 @@
           </v-row>
           <v-row class="mt-0">
             <v-col>
-              <h2 v-if="!editUser">Eralejo2003</h2>
+              <h2 v-if="!editUser">{{ user.username }}</h2>
               <v-row v-if="editUser">
                 <v-col cols="6" md="6" lg="6">
                   <v-text-field
@@ -64,7 +66,7 @@
           </v-row>
           <v-row class="mt-0">
             <v-col>
-              <h2 v-if="!editEmail">eralejo2003@gmail.com</h2>
+              <h2 v-if="!editEmail">{{ user.email }}</h2>
               <v-row v-if="editEmail">
                 <v-col cols="6" md="6" lg="6">
                   <v-text-field
@@ -99,7 +101,7 @@
           </v-row>
           <v-row class="mt-0">
             <v-col>
-              <h2 v-if="!editPassword" type="password">************</h2>
+              <h2 v-if="!editPassword" type="password">********</h2>
               <v-row v-if="editPassword">
                 <v-col cols="6" md="6" lg="6">
                   <h4 class="pt-2">Nueva Contrasena</h4>
@@ -110,7 +112,7 @@
                     rounded
                     dense
                     light
-                    label="correo electronico"
+                    label="nueva contraseña"
                     solo
                   ></v-text-field>
                 </v-col>
@@ -124,7 +126,7 @@
                     rounded
                     dense
                     light
-                    label="correo electronico"
+                    label="confirmar contraseña"
                     solo
                   ></v-text-field>
                 </v-col>
@@ -152,7 +154,10 @@
           >
         </v-col>
         <v-col cols="2" lg="2" md="2">
-          <v-btn color="var(--v-error-base)" class="text--white"
+          <v-btn
+            color="var(--v-error-base)"
+            class="text--white"
+            @click="cancelEdit"
             >Cancelar</v-btn
           >
         </v-col>
@@ -164,6 +169,9 @@
 <script lang="ts">
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
+import { getModule } from "vuex-module-decorators";
+import UserStore from "@/store/models/user";
+import axios from "axios";
 
 @Component({
   name: "UsuarioCuenta",
@@ -172,12 +180,34 @@ class UsuarioCuenta extends Vue {
   editUser = false;
   editEmail = false;
   editPassword = false;
-
+  userStore = getModule(UserStore, this.$store);
+  user = this.userStore.user;
+  carrera = "";
   get editandoUsuario() {
-    if(this.editUser || this.editEmail || this.editPassword) {
-        return true;
+    if (this.editUser || this.editEmail || this.editPassword) {
+      return true;
     }
     return false;
+  }
+
+  async created() {
+    const carreras = await axios({
+      method: "GET",
+      url: "https://inside-class-bf070-default-rtdb.firebaseio.com/carreras.json",
+      responseType: "stream",
+    });
+    for (let index in carreras.data) {
+      if (this.user.career == carreras.data[index].id) {
+        this.carrera = carreras.data[index].title;
+        break;
+      }
+    }
+  }
+
+  cancelEdit() {
+    this.editUser = false;
+    this.editEmail = false;
+    this.editPassword = false;
   }
 }
 
