@@ -29,8 +29,8 @@
     <v-list dense>
       <v-list-item
         class="py-1"
-        v-for="item in items"
-        :key="item.title"
+        v-for="(item, index) in items"
+        :key="index"
         link
         :to="item.to"
         @click="active(item)"
@@ -120,9 +120,10 @@ export default class MainSideBar extends Vue {
 </script>
 
 <style scoped>
-.cut{
+.cut {
   border-width: 0.1rem !important;
   border-color: var(--v-lightgray-darken1) !important;
   height: 100%;
+  background-color: var(--v-lightgray-darken1) !important;
 }
 </style>
