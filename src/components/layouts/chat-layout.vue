@@ -154,17 +154,23 @@ export default class ChatLayout extends Vue {
     });
     this.userStore.getMembersActiveChat();
     this.userStore.getMessages();
-    this.input = '';
+    this.input = "";
   }
 
   get getImgUrl() {
     if (this.userStore.chats[this.userStore.activeChat].code.includes("IS")) {
       return require("@/assets/chats-img/Sistemas.svg");
     }
-    if (this.userStore.chats[this.userStore.activeChat].code.includes("QQ") || this.userStore.chats[this.userStore.activeChat].code.includes("Q")) {
+    if (
+      this.userStore.chats[this.userStore.activeChat].code.includes("QQ") ||
+      this.userStore.chats[this.userStore.activeChat].code.includes("Q")
+    ) {
       return require("@/assets/chats-img/Quimica.svg");
     }
-    if (this.userStore.chats[this.userStore.activeChat].code.includes("IE") || this.userStore.chats[this.userStore.activeChat].code.includes("FS")) {
+    if (
+      this.userStore.chats[this.userStore.activeChat].code.includes("IE") ||
+      this.userStore.chats[this.userStore.activeChat].code.includes("FS")
+    ) {
       return require("@/assets/chats-img/Electrica.svg");
     }
     return require("@/assets/chats-img/chat-default.svg");
@@ -173,6 +179,9 @@ export default class ChatLayout extends Vue {
 </script>
 
 <style scoped>
+.img-chat {
+  height: 3rem;
+}
 .main-wrap {
   background-color: var(--v-primary-lighten2);
 }

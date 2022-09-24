@@ -36,10 +36,7 @@
             @click="updateActiveChat(index)"
           >
             <v-col lg="3" md="3" cols="3" class="pa-0" align-self="center">
-              <v-img
-                class="img-chat rounded-circle"
-                :src="getImgUrl"
-              ></v-img>
+              <v-img class="img-chat rounded-circle" :src="getImgUrl"></v-img>
             </v-col>
             <v-col lg="9" md="9" cols="9" class="white--text text-center">
               <v-row>
@@ -103,6 +100,9 @@ export default class SecondaySideBar extends Vue {
 </script>
 
 <style scoped>
+.img-chat {
+  height: 3rem;
+}
 .active-chat {
   background-color: var(--v-primarybright-base);
 }
