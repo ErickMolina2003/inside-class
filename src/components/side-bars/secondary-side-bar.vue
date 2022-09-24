@@ -38,7 +38,7 @@
             <v-col lg="3" md="3" cols="3" class="pa-0" align-self="center">
               <v-img
                 class="img-chat rounded-circle"
-                src="@/assets/usuarios/perfil.svg"
+                :src="getImgUrl"
               ></v-img>
             </v-col>
             <v-col lg="9" md="9" cols="9" class="white--text text-center">
@@ -79,6 +79,25 @@ export default class SecondaySideBar extends Vue {
     this.userStore.setActiveChat(chatId);
     this.userStore.getMembersActiveChat();
     this.userStore.getMessages();
+  }
+
+  get getImgUrl() {
+    if (this.userStore.chats[this.userStore.activeChat].code.includes("IS")) {
+      return require("@/assets/chats-img/Sistemas.svg");
+    }
+    if (
+      this.userStore.chats[this.userStore.activeChat].code.includes("QQ") ||
+      this.userStore.chats[this.userStore.activeChat].code.includes("Q")
+    ) {
+      return require("@/assets/chats-img/Quimica.svg");
+    }
+    if (
+      this.userStore.chats[this.userStore.activeChat].code.includes("IE") ||
+      this.userStore.chats[this.userStore.activeChat].code.includes("FS")
+    ) {
+      return require("@/assets/chats-img/Electrica.svg");
+    }
+    return require("@/assets/chats-img/chat-default.svg");
   }
 }
 </script>

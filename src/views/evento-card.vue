@@ -1,6 +1,6 @@
 <template>
-  <v-card class="evento-card mx-auto my-6" max-width="300">
-    <v-img height="261" src="../assets/eventos-img/evento-img.svg"> </v-img>
+  <v-card class="evento-card mx-1 my-6" max-width="300">
+    <v-img height="261" :src="getImgUrl"> </v-img>
     <v-card-actions class="d-flex justify-space-between">
       <v-card-title class="pt-0 pb-0 pl-2">
         <h3 class="white--text text-break text-center">{{ evento.title }}</h3>
@@ -17,7 +17,7 @@
 
         <v-card-text class="white--text">
           <h5>
-            {{ evento.description}} <br />
+            {{ evento.description }} <br />
             Lugar: {{ evento.location }} <br />
             Hora: {{ evento.time }} <br />
             precio: {{ evento.price }} lps
@@ -33,14 +33,35 @@ import Vue from "vue";
 import { Component, Prop } from "vue-property-decorator";
 import { events } from "@/store/models/chats";
 
-
 @Component({
   name: "EventoCard",
 })
 export default class EventoCard extends Vue {
+  @Prop({ default: [] }) evento!: events;
+
   show = false;
 
-  @Prop({ default: [] }) evento!: events;
+  get getImgUrl() {
+    if (this.evento.title.includes("pizza")) {
+      return require("@/assets/eventos-img/evento-img.svg");
+    }
+    if (this.evento.title.includes("camisas")) {
+      return require("@/assets/eventos-img/Camisas.svg");
+    }
+    if (this.evento.title.includes("torneo")) {
+      return require("@/assets/eventos-img/Gaming.svg");
+    }
+    if (this.evento.title.includes("Algoritmia")) {
+      return require("@/assets/eventos-img/Algoritmos.svg");
+    }
+    if (this.evento.title.includes("Fiesta")) {
+      return require("@/assets/eventos-img/Fiesta.svg");
+    }
+    if (this.evento.title.includes("Noche")) {
+      return require("@/assets/eventos-img/Benefica.svg");
+    }
+    return require("@/assets/eventos-img/evento-img.svg");
+  }
 }
 </script>
 
@@ -49,7 +70,7 @@ export default class EventoCard extends Vue {
   background-color: var(--v-primary-darken2);
   border-radius: 30px;
 }
-.cut{
+.cut {
   border-width: 0.1rem !important;
   height: 100%;
 }

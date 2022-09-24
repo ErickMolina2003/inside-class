@@ -18,13 +18,16 @@
             md="1"
             lg="1"
             align-self="start"
+            class="pr-5"
           >
-            <v-img
-              class="img-chat rounded-circle"
-              src="@/assets/usuarios/perfil.svg"
-              max-height="40px"
-              max-width="40px"
-            ></v-img>
+            <v-row justify="end">
+              <v-img
+                class="img-chat rounded-circle"
+                :src="getImgUrl(message)"
+                max-height="40px"
+                max-width="40px"
+              ></v-img>
+            </v-row>
           </v-col>
 
           <v-col
@@ -78,7 +81,7 @@
           >
             <v-img
               class="img-chat rounded-circle"
-              src="@/assets/usuarios/perfil.svg"
+              :src="getImgUrl(message)"
               max-height="40px"
               max-width="40px"
             ></v-img>
@@ -108,6 +111,20 @@ export default class ChattingComponent extends Vue {
       return true;
     }
     return false;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getImgUrl(message: any) {
+    if (message?.speakerTitle == "Erick Molina") {
+      return require("@/assets/usuarios/erick.svg");
+    }
+    if (message?.speakerTitle == "Angel Sanchez") {
+      return require("@/assets/usuarios/Angel.svg");
+    }
+    if (message?.speakerTitle == "Gabriel Omar") {
+      return require("@/assets/usuarios/Gabriel.svg");
+    }
+    return require("@/assets/usuarios/Default.svg");
   }
 
   @Watch("userStore.messages")

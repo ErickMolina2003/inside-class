@@ -14,7 +14,8 @@
       </v-col>
       <v-col lg="4" md="4" cols="4">
         <v-img
-          src="@/assets/usuarios/perfil.svg"
+          class="rounded-circle"
+          :src="getImgUrl(user)"
           max-height="45px"
           max-width="45px"
         ></v-img>
@@ -41,9 +42,10 @@
               {{ member.firstName }} {{ member.lastName }}
             </h4>
           </v-col>
-          <v-col lg="4" md="4" cols="4">
+          <v-col lg="4" md="4" cols="4" align-self="end">
             <v-img
-              src="@/assets/usuarios/perfil.svg"
+              class="rounded-circle"
+              :src="getImgUrl(member)"
               max-height="35px"
               max-width="35px"
             ></v-img>
@@ -56,7 +58,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { Component , Watch} from "vue-property-decorator";
+import { Component, Watch } from "vue-property-decorator";
 import { getModule } from "vuex-module-decorators";
 import UserStore from "@/store/models/user";
 
@@ -67,6 +69,29 @@ export default class RightSideBar extends Vue {
   userStore = getModule(UserStore, this.$store);
   user = this.userStore.user;
   members = this.userStore.members;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getImgUrl(message: any) {
+    if (
+      message?.speakerTitle == "Erick Molina" ||
+      message?.firstName.includes("Erick")
+    ) {
+      return require("@/assets/usuarios/erick.svg");
+    }
+    if (
+      message?.speakerTitle == "Angel Sanchez" ||
+      message?.firstName.includes("Angel")
+    ) {
+      return require("@/assets/usuarios/Angel.svg");
+    }
+    if (
+      message?.speakerTitle == "Gabriel Omar" ||
+      message?.firstName.includes("Gabriel")
+    ) {
+      return require("@/assets/usuarios/Gabriel.svg");
+    }
+    return require("@/assets/usuarios/Default.svg");
+  }
 
   @Watch("userStore.members")
   updateMembers() {

@@ -28,9 +28,10 @@
       </v-col>
       <v-col lg="2" md="2" cols="2">
         <v-img
-          src="../assets/usuarios/perfil.svg"
-          max-height="45px"
-          max-width="45px"
+          class="round-img"
+          :src="getImgUrl"
+          max-height="60px"
+          max-width="60px"
           @click="redirectToProfile"
         ></v-img>
       </v-col>
@@ -56,19 +57,36 @@ export default class NavBar extends Vue {
   get routeTittle() {
     if (this.$route.name == "chats") {
       return "Descubre nuevos chats";
-    }else if (this.$route.name == "voae") {
+    } else if (this.$route.name == "voae") {
       return "Horas VOAE";
-    }else if (this.$route.name == "eventos") {
+    } else if (this.$route.name == "eventos") {
       return "Eventos";
-    }else {
+    } else {
       return "Inside Class";
     }
   }
 
-  redirectToProfile(){
+  get getImgUrl() {
+    if (this.user.firstName.includes("Erick")) {
+      return require("@/assets/usuarios/erick.svg");
+    }
+    if (this.user.firstName.includes("Angel")) {
+      return require("@/assets/usuarios/Angel.svg");
+    }
+    if (this.user.firstName.includes("Gabriel")) {
+      return require("@/assets/usuarios/Gabriel.svg");
+    }
+    return require("@/assets/usuarios/Default.svg");
+  }
+
+  redirectToProfile() {
     this.$router.push("/user");
   }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.round-img {
+  border-radius: 45%;
+}
+</style>

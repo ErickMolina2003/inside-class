@@ -163,5 +163,6 @@ export default class Login extends Vue {
 .cut {
   border-width: 0.2rem !important;
   border-color: var(--v-primary-base) !important;
+  background-color:  var(--v-primary-base) !important;
 }
 </style>

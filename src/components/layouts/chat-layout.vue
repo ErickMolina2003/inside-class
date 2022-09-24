@@ -16,14 +16,17 @@
       <v-row>
         <v-col cols="6" md="1" lg="1">
           <v-img
-            class="img-chat rounded-circle"
-            src="@/assets/usuarios/perfil.svg"
+            class="img-chat rounded-circle px-0"
+            :src="getImgUrl"
             max-height="60px"
             max-width="60px"
           ></v-img>
         </v-col>
         <v-col cols="6" md="3" lg="3" align-self="center">
-          <h4 class="white--text text-uppercase text-bold font-weight-black">{{this.userStore.chats[this.userStore.activeChat].code}}  {{this.userStore.chats[this.userStore.activeChat].title}}</h4>
+          <h4 class="white--text text-uppercase text-bold font-weight-black">
+            {{ this.userStore.chats[this.userStore.activeChat].code }}
+            {{ this.userStore.chats[this.userStore.activeChat].title }}
+          </h4>
         </v-col>
       </v-row>
     </v-app-bar>
@@ -151,6 +154,20 @@ export default class ChatLayout extends Vue {
     });
     this.userStore.getMembersActiveChat();
     this.userStore.getMessages();
+    this.input = '';
+  }
+
+  get getImgUrl() {
+    if (this.userStore.chats[this.userStore.activeChat].code.includes("IS")) {
+      return require("@/assets/chats-img/Sistemas.svg");
+    }
+    if (this.userStore.chats[this.userStore.activeChat].code.includes("QQ") || this.userStore.chats[this.userStore.activeChat].code.includes("Q")) {
+      return require("@/assets/chats-img/Quimica.svg");
+    }
+    if (this.userStore.chats[this.userStore.activeChat].code.includes("IE") || this.userStore.chats[this.userStore.activeChat].code.includes("FS")) {
+      return require("@/assets/chats-img/Electrica.svg");
+    }
+    return require("@/assets/chats-img/chat-default.svg");
   }
 }
 </script>
