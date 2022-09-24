@@ -15,14 +15,14 @@
       <v-spacer></v-spacer>
 
       <v-btn class="mr-10" large rounded color="var(--v-success-darken1)"
-        >Registrarse</v-btn
+        @click="redirectToRegister">Registrarse</v-btn
       >
       <v-btn
         class="mr-10 white--text"
         large
         rounded
         color="var(--v-primarybright-base)"
-        >Login</v-btn
+        @click="redirectToLogin">Login</v-btn
       >
     </v-toolbar>
     <v-card
@@ -58,7 +58,14 @@ import { Component } from "vue-property-decorator";
 @Component({
   name: "LandingPage",
 })
-export default class LandingPage extends Vue {}
+export default class LandingPage extends Vue {
+  redirectToRegister(){
+    this.$router.push("/registro");
+  }
+  redirectToLogin(){
+    this.$router.push("/login");
+  }
+}
 </script>
 
 <style scoped>
