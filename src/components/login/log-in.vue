@@ -1,5 +1,8 @@
 <template>
   <v-container class="fill-height">
+    <v-snackbar v-model="snackbar" top color="red"
+      >Credenciales no validas!</v-snackbar
+    >
     <v-card
       class="pa-5 rounded-xl"
       color="var(--v-primary-darken4)"
@@ -37,11 +40,12 @@
           <v-row justify="center">
             <v-col lg="8" md="8" cols="12" class="pb-0">
               <v-text-field
+                v-model="usuarioEmail"
                 class="shrink"
                 rounded
                 dense
                 light
-                label="usuario"
+                label="usuario o email"
                 solo
               ></v-text-field>
             </v-col>
@@ -49,6 +53,7 @@
           <v-row justify="center">
             <v-col lg="8" md="8" cols="12" class="py-0">
               <v-text-field
+                v-model="password"
                 class="shrink"
                 rounded
                 dense
@@ -61,12 +66,17 @@
           </v-row>
           <v-row justify="center">
             <v-col class="pt-0">
-              <a class="white--text">Crear Cuenta</a>
+              <a class="white--text" @click="redirectToCreate">Crear Cuenta</a>
             </v-col>
           </v-row>
           <v-row justify="center">
             <v-col cols="12" md="12" lg="12" class="pt-0">
-              <v-btn large rounded color="var(--v-success-darken1)" dark
+              <v-btn
+                large
+                rounded
+                color="var(--v-success-darken1)"
+                dark
+                @click="login"
                 >Iniciar Sesion</v-btn
               >
             </v-col>
@@ -80,19 +90,69 @@
 <script lang="ts">
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
+import axios from "axios";
 
 @Component({
   name: "LogIn",
 })
-export default class Login extends Vue {}
+export default class Login extends Vue {
+  usuarioEmail = "";
+  password = "";
+  isLogged = false;
+  snackbar = false;
+
+  redirectToCreate() {
+    this.$router.push("/registro");
+  }
+
+  async login() {
+    if (this.usuarioEmail && this.password) {
+      const allUsers = await this.getAllUsers();
+      allUsers.forEach((user) => {
+        if (
+          (user.email == this.usuarioEmail ||
+            user.username == this.usuarioEmail) &&
+          user.password == this.password
+        ) {
+          this.$router.push("/layout/chats");
+          this.isLogged = true;
+        }
+      });
+      if (!this.isLogged) {
+        this.validationFailed();
+      }
+    } else {
+      this.validationFailed();
+    }
+  }
+
+  async getAllUsers() {
+    const usuarios = await axios({
+      method: "GET",
+      url: "https://inside-class-bf070-default-rtdb.firebaseio.com/usuarios.json",
+      responseType: "stream",
+    });
+    const allUsers = [];
+    for (let index in usuarios.data) {
+      allUsers.push(usuarios.data[index]);
+    }
+    return allUsers;
+  }
+
+  validationFailed() {
+    this.snackbar = true;
+    this.usuarioEmail = "";
+    this.password = "";
+  }
+}
 </script>
 
 <style scoped>
 .row-logo {
   width: 50%;
 }
-.cut{
+.cut {
   border-width: 0.2rem !important;
-  border-color: var(--v-primary-base) !important; 
+  border-color: var(--v-primary-base) !important;
 }
 </style>
