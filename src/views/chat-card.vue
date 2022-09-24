@@ -12,7 +12,7 @@
       <v-col lg="2" md="2" cols="2">
         <v-icon class="white--text">mdi-account-group</v-icon>
       </v-col>
-      <v-col lg="8" md="8" cols="8" v-if="chat.numberMembers">
+      <v-col lg="8" md="8" cols="8" v-if="chat.numberMembers" align-self="center">
         <h5 class="white--text">{{ chat.numberMembers }} Participantes</h5>
       </v-col>
     </v-row>
