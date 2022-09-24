@@ -1,7 +1,7 @@
 <template>
   <v-card class="voae-card mx-auto my-6" max-width="300" max-height="500">
     <v-img height="180" src="../assets/voae-img/voae-card-img.svg"></v-img>
-    <v-card-title class="white--text pb-0 mt-3"
+    <v-card-title class="white--text pb-0 mt-3 text-break text-center"
       >{{ voae.title }}</v-card-title
     >
     <v-card-text class="lightgray--text text--darken-1">

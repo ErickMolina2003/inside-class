@@ -3,7 +3,7 @@
     <v-img height="261" src="../assets/eventos-img/evento-img.svg"> </v-img>
     <v-card-actions class="d-flex justify-space-between">
       <v-card-title class="pt-0 pb-0 pl-2">
-        <h3 class="white--text">{{ evento.title }}</h3>
+        <h3 class="white--text text-break text-center">{{ evento.title }}</h3>
       </v-card-title>
       <v-btn icon @click="show = !show">
         <v-icon class="white--text">{{

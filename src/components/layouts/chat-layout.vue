@@ -23,7 +23,7 @@
           ></v-img>
         </v-col>
         <v-col cols="6" md="3" lg="3" align-self="center">
-          <h4 class="white--text">IS-501 BASE DE DATOS 1</h4>
+          <h4 class="white--text text-uppercase text-bold font-weight-black">{{this.userStore.chats[this.userStore.activeChat].code}}  {{this.userStore.chats[this.userStore.activeChat].title}}</h4>
         </v-col>
       </v-row>
     </v-app-bar>
@@ -34,6 +34,7 @@
 
     <v-footer color="var(--v-primary-lighten2)" app height="72" inset>
       <v-text-field
+        @keyup.enter="sendMessage"
         v-model="input"
         background-color="var(--v-primary-darken3)"
         append-icon="mdi-send"
@@ -87,6 +88,10 @@ import RightSideBar from "@/components/side-bars/right-side-bar.vue";
 import ChattingComponent from "@/components/chats/chatting-component.vue";
 import MainSideBar from "@/components/layouts/main-layout.vue";
 import EmojiPicker from "vue-emoji-picker";
+import { getModule } from "vuex-module-decorators";
+import UserStore from "@/store/models/user";
+import { messages } from "@/store/models/chats";
+import axios from "axios";
 
 @Component({
   name: "ChatLayout",
@@ -99,12 +104,53 @@ import EmojiPicker from "vue-emoji-picker";
   },
 })
 export default class ChatLayout extends Vue {
+  userStore = getModule(UserStore, this.$store);
   drawer = null;
 
   input = "";
 
   insert(emoji: string) {
     this.input += emoji;
+  }
+
+  created() {
+    this.userStore.getMembersActiveChat();
+    this.userStore.getMessages();
+  }
+
+  sendMessage() {
+    const currentChat = this.userStore.chats[this.userStore.activeChat];
+    const newMessage: messages = {
+      speaker: this.userStore.user.id,
+      listener: currentChat.code,
+      message: this.input,
+    };
+
+    currentChat.messages.push(newMessage);
+
+    this.findChatID(currentChat);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async findChatID(currentChat: any) {
+    const response = await axios({
+      method: "GET",
+      url: "https://inside-class-bf070-default-rtdb.firebaseio.com/chats.json",
+      responseType: "stream",
+    });
+    let key;
+    for (const i in response.data) {
+      if (response.data[i].code == currentChat.code) {
+        key = i;
+      }
+    }
+    await axios({
+      method: "PUT",
+      url: `https://inside-class-bf070-default-rtdb.firebaseio.com/chats/${key}.json`,
+      data: JSON.stringify(currentChat),
+    });
+    this.userStore.getMembersActiveChat();
+    this.userStore.getMessages();
   }
 }
 </script>

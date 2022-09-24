@@ -6,103 +6,115 @@
       </v-col>
     </v-row>
     <v-container>
-      <v-row class="mb-3 user-chat">
-        <v-col cols="6" md="1" lg="1" align-self="start">
-          <v-img
-            class="img-chat rounded-circle"
-            src="@/assets/usuarios/perfil.svg"
-            max-height="40px"
-            max-width="40px"
-          ></v-img>
-        </v-col>
+      <div v-for="(message, index) in messages" :key="index">
+        <v-row
+          :class="ownChat(message.speaker) ? 'own-chat' : 'user-chat'"
+          :justify="ownChat(message.speaker) ? 'end' : 'start'"
+          class="mb-5"
+        >
+          <v-col
+            v-if="!ownChat(message.speaker)"
+            cols="6"
+            md="1"
+            lg="1"
+            align-self="start"
+          >
+            <v-img
+              class="img-chat rounded-circle"
+              src="@/assets/usuarios/perfil.svg"
+              max-height="40px"
+              max-width="40px"
+            ></v-img>
+          </v-col>
 
-        <v-col class="chat-content" cols="auto" md="auto" lg="auto">
-          <v-row>
-            <v-col cols="12" md="12" lg="12" class="pb-0">
-              <h3>Alejandro Molina</h3>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" md="12" lg="12">
-              <h4 class="white--text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-                debitis voluptas non, magni aut ab velit voluptatem maiores
-                deleniti quidem, earum totam itaque et necessitatibus nemo
-                assumenda eos dolores modi!
-              </h4>
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
+          <v-col
+            v-if="!ownChat(message.speaker)"
+            class="chat-content"
+            cols="auto"
+            md="auto"
+            lg="auto"
+          >
+            <v-row>
+              <v-col cols="12" md="12" lg="12" class="pb-0">
+                <h3>{{ message.speakerTitle }}</h3>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" md="12" lg="12">
+                <h4 class="white--text">
+                  {{ message.message }}
+                </h4>
+              </v-col>
+            </v-row>
+          </v-col>
 
-      <v-row class="mb-3 user-chat">
-        <v-col cols="6" md="1" lg="1" align-self="start">
-          <v-img
-            class="img-chat rounded-circle"
-            src="@/assets/usuarios/perfil.svg"
-            max-height="40px"
-            max-width="40px"
-          ></v-img>
-        </v-col>
+          <v-col
+            v-if="ownChat(message.speaker)"
+            class="chat-content"
+            cols="auto"
+            md="auto"
+            lg="auto"
+          >
+            <v-row>
+              <v-col cols="12" md="12" lg="12" class="pb-0">
+                <h3>{{ message.speakerTitle }}</h3>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" md="12" lg="12">
+                <h4 class="white--text">
+                  {{ message.message }}
+                </h4>
+              </v-col>
+            </v-row>
+          </v-col>
 
-        <v-col class="chat-content" cols="auto" md="auto" lg="auto">
-          <v-row>
-            <v-col cols="12" md="12" lg="12" class="pb-0">
-              <h3>Alejandro Molina</h3>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" md="12" lg="12">
-              <h4 class="white--text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-                debitis voluptas non, magni aut ab velit voluptatem maiores
-                deleniti quidem, earum totam itaque et necessitatibus nemo
-                assumenda eos dolores modi!
-              </h4>
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
-
-      <v-row class="mb-3 own-chat" justify="end">
-        <v-col class="chat-content" cols="auto" md="auto" lg="auto">
-          <v-row>
-            <v-col cols="12" md="12" lg="12" class="pb-0">
-              <h3>Alejandro Molina</h3>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" md="12" lg="12">
-              <h4 class="white--text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-                debitis voluptas non, magni aut ab velit voluptatem maiores
-                deleniti quidem, earum totam itaque et necessitatibus nemo
-                assumenda eos dolores modi!
-              </h4>
-            </v-col>
-          </v-row>
-        </v-col>
-        <v-col cols="6" md="1" lg="1" align-self="start">
-          <v-img
-            class="img-chat rounded-circle"
-            src="@/assets/usuarios/perfil.svg"
-            max-height="40px"
-            max-width="40px"
-          ></v-img>
-        </v-col>
-      </v-row>
+          <v-col
+            v-if="ownChat(message.speaker)"
+            cols="6"
+            md="1"
+            lg="1"
+            align-self="start"
+          >
+            <v-img
+              class="img-chat rounded-circle"
+              src="@/assets/usuarios/perfil.svg"
+              max-height="40px"
+              max-width="40px"
+            ></v-img>
+          </v-col>
+        </v-row>
+      </div>
     </v-container>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import { Component } from "vue-property-decorator";
+import { Component, Watch } from "vue-property-decorator";
+import { getModule } from "vuex-module-decorators";
+import UserStore from "@/store/models/user";
 
 @Component({
   name: "ChattingComponent",
 })
-export default class ChattingComponent extends Vue {}
+export default class ChattingComponent extends Vue {
+  userStore = getModule(UserStore, this.$store);
+  user = this.userStore.user;
+  messages = this.userStore.messages;
+
+  ownChat(speaker: number) {
+    if (this.user.id == speaker) {
+      return true;
+    }
+    return false;
+  }
+
+  @Watch("userStore.messages")
+  updateMessages() {
+    this.messages = this.userStore.messages;
+  }
+}
 </script>
 
 <style scoped>

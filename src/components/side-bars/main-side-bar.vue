@@ -48,7 +48,7 @@
     </v-list>
 
     <template v-slot:append>
-      <v-list-item link to="/">
+      <v-list-item link to="/login">
         <v-list-item-icon>
           <v-icon color="var(--v-error-base)">mdi-account-cancel</v-icon>
         </v-list-item-icon>
