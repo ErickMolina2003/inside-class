@@ -112,6 +112,10 @@ export default class SecondaySideBar extends Vue {
   cursor: pointer;
 }
 
+.img-chat{
+  height: 3rem; 
+}
+
 .chat-row:hover {
   background-color: var(--v-success-base);
 }
